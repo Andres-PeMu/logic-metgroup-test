@@ -52,6 +52,15 @@ class MyMatrix {
   }
 }
 
+// Para mostrar en Ui
+function showResult(resultId, matrixId, value, matrix) {
+  const resultElement = document.getElementById(resultId);
+  resultElement.textContent = value;
+
+  const matrixElement = document.getElementById(matrixId);
+  matrixElement.textContent = JSON.stringify(matrix);
+}
+
 // Ejemplos de uso
 const a = [1, 2];
 const b = [
@@ -95,7 +104,7 @@ const f = [
     [4, 8, 3],
   ],
 ];
-console.log("respuestas prueba logica 1");
+
 const matrixA = new MyMatrix(a);
 const matrixB = new MyMatrix(b);
 const matrixC = new MyMatrix(c);
@@ -103,23 +112,24 @@ const matrixD = new MyMatrix(d);
 const matrixE = new MyMatrix(e);
 const matrixF = new MyMatrix(f);
 
-console.log('logic 01 dimension matrixA',matrixA.dimension()); // Salida: 1
-console.log('logic 01 dimension matrixB',matrixB.dimension()); // Salida: 2
-console.log('logic 01 dimension matrixC',matrixC.dimension()); // Salida: 2
-console.log('logic 01 dimension matrixD',matrixD.dimension()); // Salida: 3
-console.log('logic 01 dimension matrixE',matrixE.dimension()); // Salida: 3
-console.log('logic 01 dimension matrixF',matrixF.dimension()); // Salida: 3
+// Mostrar los resultados y matrices en el navegador
+showResult('result-dimension-matrixA', 'matrixA', `Dimension matrixA: ${matrixA.dimension()}`, matrixA.matrix);
+showResult('result-dimension-matrixB', 'matrixB', `Dimension matrixB: ${matrixB.dimension()}`, matrixB.matrix);
+showResult('result-dimension-matrixC', 'matrixC', `Dimension matrixC: ${matrixC.dimension()}`, matrixC.matrix);
+showResult('result-dimension-matrixD', 'matrixD', `Dimension matrixD: ${matrixD.dimension()}`, matrixD.matrix);
+showResult('result-dimension-matrixE', 'matrixE', `Dimension matrixE: ${matrixE.dimension()}`, matrixE.matrix);
+showResult('result-dimension-matrixF', 'matrixF', `Dimension matrixF: ${matrixF.dimension()}`, matrixF.matrix);
 
-console.log('logic 01 straight matrixA',matrixA.straight()); // Salida: true
-console.log('logic 01 straight matrixB',matrixB.straight()); // Salida: true
-console.log('logic 01 straight matrixC',matrixC.straight()); // Salida: true
-console.log('logic 01 straight matrixD',matrixD.straight()); // Salida: true
-console.log('logic 01 straight matrixE',matrixE.straight()); // Salida: false
-console.log('logic 01 straight matrixF',matrixF.straight()); // Salida: true
+showResult('result-straight-matrixA', 'matrixA', `Straight matrixA: ${matrixA.straight()}`, matrixA.matrix);
+showResult('result-straight-matrixB', 'matrixB', `Straight matrixB: ${matrixB.straight()}`, matrixB.matrix);
+showResult('result-straight-matrixC', 'matrixC', `Straight matrixC: ${matrixC.straight()}`, matrixC.matrix);
+showResult('result-straight-matrixD', 'matrixD', `Straight matrixD: ${matrixD.straight()}`, matrixD.matrix);
+showResult('result-straight-matrixE', 'matrixE', `Straight matrixE: ${matrixE.straight()}`, matrixE.matrix);
+showResult('result-straight-matrixF', 'matrixF', `Straight matrixF: ${matrixF.straight()}`, matrixF.matrix);
 
-console.log('logic 01 compute matrixA',matrixA.compute()); // Salida: 3
-console.log('logic 01 compute matrixB',matrixB.compute()); // Salida: 9
-console.log('logic 01 compute matrixC',matrixC.compute()); // Salida: 15
-console.log('logic 01 compute matrixD',matrixD.compute()); // Salida: 18
-console.log('logic 01 compute matrixE',matrixE.compute()); // Salida: 70
-console.log('logic 01 compute matrixF',matrixF.compute()); // Salida: 66
+showResult('result-compute-matrixA', 'matrixA', `Compute matrixA: ${matrixA.compute()}`, matrixA.matrix);
+showResult('result-compute-matrixB', 'matrixB', `Compute matrixB: ${matrixB.compute()}`, matrixB.matrix);
+showResult('result-compute-matrixC', 'matrixC', `Compute matrixC: ${matrixC.compute()}`, matrixC.matrix);
+showResult('result-compute-matrixD', 'matrixD', `Compute matrixD: ${matrixD.compute()}`, matrixD.matrix);
+showResult('result-compute-matrixE', 'matrixE', `Compute matrixE: ${matrixE.compute()}`, matrixE.matrix);
+showResult('result-compute-matrixF', 'matrixF', `Compute matrixF: ${matrixF.compute()}`, matrixF.matrix);

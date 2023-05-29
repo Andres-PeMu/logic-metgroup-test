@@ -1,33 +1,38 @@
 class MyArray {
-    constructor(string) {
-      this.string = string;
+  constructor(string) {
+    this.string = string;
+  }
+
+  operation() {
+    const operationRegex =
+      /^\s*\(?(\d+(\.\d+)?)\s*([+\-*\/]\s*\d+(\.\d+)?\s*)*\)?\s*/;
+
+    return operationRegex.test(this.string);
+  }
+
+  compute() {
+    const isValidOperation = this.operation();
+
+    if (!isValidOperation) {
+      return false;
     }
-  
-    operation() {
-      const operationRegex = /^\s*\(?(\d+(\.\d+)?)\s*([+\-*\/]\s*\d+(\.\d+)?\s*)*\)?\s*/;
-  
-      return operationRegex.test(this.string);
-    }
-  
-    compute() {
-      const isValidOperation = this.operation();
-  
-      if (!isValidOperation) {
-        return false;
-      }
-  
-      try {
-        const result = eval(this.string);
-        return result;
-      } catch (error) {
-        return false;
-      }
+
+    try {
+      const result = eval(this.string);
+      return result;
+    } catch (error) {
+      return false;
     }
   }
+}
+
+function showResult(id, result) {
+  const element = document.getElementById(id);
+  element.textContent = result;
+}
 
 // Ejemplos de uso
 {
-  console.log("respuestas prueba logica 2");
   const a = "Hello world";
   const b = "2 + 10 / 2 - 20";
   const c = "(2 + 10) / 2 - 20";
@@ -38,13 +43,25 @@ class MyArray {
   const myArrayC = new MyArray(c);
   const myArrayD = new MyArray(d);
 
-  console.log('logic 02 operation myArrayA',myArrayA.operation()); // Salida: false
-  console.log('logic 02 operation myArrayB',myArrayB.operation()); // Salida: true
-  console.log('logic 02 operation myArrayC',myArrayC.operation()); // Salida: true
-  console.log('logic 02 operation myArrayD',myArrayD.operation()); // Salida: false
+  showResult("result-operation-myArrayA", `Operation myArrayA: ${a}`);
+  showResult("result-operation-myArrayB", `Operation myArrayB: ${b}`);
+  showResult("result-operation-myArrayC", `Operation myArrayC: ${c}`);
+  showResult("result-operation-myArrayD", `Operation myArrayD: ${d}`);
 
-  console.log('logic 02 compute myArrayA',myArrayA.compute()); // Salida: false
-  console.log('logic 02 compute myArrayB',myArrayB.compute()); // Salida: -13
-  console.log('logic 02 compute myArrayC',myArrayC.compute()); // Salida: -14
-  console.log('logic 02 compute myArrayD',myArrayD.compute()); // Salida: false
+  showResult(
+    "result-compute-myArrayA",
+    `Compute myArrayA: ${myArrayA.compute()}`
+  );
+  showResult(
+    "result-compute-myArrayB",
+    `Compute myArrayB: ${myArrayB.compute()}`
+  );
+  showResult(
+    "result-compute-myArrayC",
+    `Compute myArrayC: ${myArrayC.compute()}`
+  );
+  showResult(
+    "result-compute-myArrayD",
+    `Compute myArrayD: ${myArrayD.compute()}`
+  );
 }
